@@ -1,4 +1,4 @@
-use c17_iot::types::{UaNodeId, UaObjectNode, UaVariableNode};
+use iot::types::{UaNodeId, UaObjectNode, UaVariableNode};
 
 fn main() {
     // 构造一个 OPC UA 对象节点，聚合两个变量节点

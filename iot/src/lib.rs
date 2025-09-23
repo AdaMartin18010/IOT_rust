@@ -43,6 +43,17 @@ pub mod digital_twin_integration;
 pub mod network_5g_integration;
 pub mod iot_analytics_advanced;
 
+// 2025年最新增强模块 - 基于 Rust 1.90 新特性
+pub mod embedded_os_enhanced;
+pub mod network_stack_enhanced;
+pub mod performance_enhanced;
+
+// 最新嵌入式框架集成
+pub mod embedded_frameworks;
+
+// 高级IoT功能模块
+pub mod advanced_iot_features;
+
 // 重新导出主要类型和功能
 pub use device_management::{
     DeviceManager,
@@ -193,7 +204,7 @@ pub use edge_computing_advanced::{
     EdgeTaskType, 
     EdgeNodeStatus, 
     EdgeTaskStatus, 
-    TaskPriority,
+    TaskPriority as LegacyTaskPriority,
     ComputeCapacity, 
     NetworkCapacity, 
     StorageCapacity, 
@@ -215,7 +226,7 @@ pub use iot_security_advanced::{
     SecurityResponseType, 
     ZeroTrustPolicyType,
     QuantumEncryptionAlgorithm, 
-    QKDProtocol, 
+    QKDProtocol as LegacyQKDProtocol, 
     AuditType, 
     AuditResult, 
     ComplianceStatus,
@@ -231,7 +242,7 @@ pub use iot_security_advanced::{
     SecurityStats
 };
 pub use digital_twin_integration::{
-    DigitalTwinManager,
+    DigitalTwinManager as LegacyDigitalTwinManager,
     DigitalTwinConfig, 
     DigitalTwinModel, 
     RealtimeSyncConfig,
@@ -239,9 +250,9 @@ pub use digital_twin_integration::{
     DigitalTwinEvent, 
     DigitalTwinType, 
     DigitalTwinStatus,
-    TwinProperty, 
+    TwinProperty as LegacyTwinProperty, 
     PropertyType, 
-    PropertyValue, 
+    PropertyValue as LegacyPropertyValue, 
     TwinRelationship, 
     RelationshipType,
     TwinBehavior, 
@@ -312,7 +323,7 @@ pub use network_5g_integration::{
     KeyManagement, 
     SecurityPolicy,
     PrivacyProtection, 
-    SliceType, 
+    SliceType as LegacySliceType, 
     ServiceType, 
     ResourceAllocation, 
     IsolationLevel,
@@ -337,3 +348,87 @@ pub use iot_analytics_advanced::{
     LogLevel, ValidationMethod, MonitoringStats, AlertRecord, AlertStatus, AnalyticsError,
     PredictionModel as AnalyticsPredictionModel
 };
+
+// 2025年最新增强模块导出 - 基于 Rust 1.90 新特性
+pub use embedded_os_enhanced::{
+    EnhancedEmbeddedOSManager, TaskConfig, TaskInfo, TaskStatus,
+    SystemResources, InterruptConfig, MemoryAllocationStrategy,
+    SystemHealth, HealthStatus as EmbeddedHealthStatus, EmbeddedOSError,
+};
+
+#[cfg(feature = "embedded")]
+pub use embedded_os_enhanced::{HardwareAbstractionLayer, example_async_task};
+pub use network_stack_enhanced::{
+    EnhancedNetworkStackManager, NetworkInterfaceConfig, NetworkInterfaceInfo, NetworkInterfaceType,
+    NetworkInterfaceStatus, SocketConfig, SocketInfo, SocketType, SocketState,
+    NetworkStats, NetworkHealth, HealthStatus as NetworkHealthStatus, NetworkStackError,
+    example_network_operations
+};
+pub use performance_enhanced::{
+    SmartCacheManager, SmartCacheConfig, EvictionPolicy, SmartCacheStats, SmartPerformanceMonitor,
+    SmartPerformanceMetric, PerformanceThreshold, PerformanceDataPoint, SmartPerformanceStats,
+    PerformanceAlert, AlertSeverity, ConcurrentTaskManager, TaskStats, PerformanceError
+};
+
+// 嵌入式框架导出
+pub use embedded_frameworks::{
+    EmbeddedFrameworkManager, FrameworkStatus
+};
+
+#[cfg(feature = "rtic")]
+pub use embedded_frameworks::rtic_manager::{
+    RTICSystemManager, RTICTaskConfig, RTICTaskStatus, RTICTaskInfo, 
+    RTICSystemStats, RTICError
+};
+
+// Embassy和ESP32支持
+#[cfg(feature = "embassy-full")]
+pub use embedded_frameworks::embassy_manager::{
+    EmbassySystemManager, EmbassyTaskConfig, EmbassyTaskStatus, EmbassyTaskInfo,
+    EmbassySystemStats, EmbassyError
+};
+
+#[cfg(feature = "esp32")]
+pub use embedded_frameworks::esp32_manager::{
+    ESP32Manager, ESP32Config, ESP32ChipType, ESP32SystemInfo, ESP32Error
+};
+
+#[cfg(feature = "riscv")]
+pub use embedded_frameworks::riscv_manager::{
+    RISCVManager, RISCVConfig, RISCVArchType, RISCVSystemInfo, 
+    RISCVPerformanceStats
+};
+
+// 高级IoT功能导出
+pub use advanced_iot_features::{
+    AdvancedDigitalTwinManager, AdvancedDigitalTwin, AdvancedTwinType, AdvancedTwinStatus, AdvancedTwinProperty, 
+    AdvancedPropertyValue, AdvancedPropertyDataType, AdvancedTwinRelationship, AdvancedRelationshipType,
+    AdvancedPropertyBuffer, AdvancedSyncResult, AdvancedTwinStats, AdvancedDigitalTwinError
+};
+
+pub use advanced_iot_features::{
+    EdgeAIEngine, AIModel, ModelType, InferenceTask, AdvancedTaskPriority,
+    InferenceResult, AIProcessingStats, AIEngineError
+};
+
+pub use advanced_iot_features::{
+    QuantumCryptoManager, AdvancedQKDProtocol, AdvancedQKDProtocolType, QuantumKey,
+    SecurityLevel, QuantumSecurityStats, QuantumCryptoError
+};
+
+pub use advanced_iot_features::{
+    Network5GSliceManager, NetworkSlice, AdvancedSliceType, AdvancedSliceStatus,
+    SliceResources, SlicePerformance, SliceConfig, SLARequirements,
+    ResourceMonitor, SliceManagerStats, ResourceUtilization, SliceManagerError
+};
+
+// 类型别名 - 为了与演示代码兼容
+pub type DigitalTwinManager<const N: usize> = AdvancedDigitalTwinManager<N>;
+pub type TwinType = AdvancedTwinType;
+pub type TwinProperty = AdvancedTwinProperty;
+pub type PropertyValue = AdvancedPropertyValue;
+pub type PropertyDataType = AdvancedPropertyDataType;
+pub type QKDProtocol = AdvancedQKDProtocol;
+pub type QKDProtocolType = AdvancedQKDProtocolType;
+pub type SliceType = AdvancedSliceType;
+pub type TaskPriority = AdvancedTaskPriority;

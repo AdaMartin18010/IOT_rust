@@ -1,4 +1,4 @@
-use c17_iot::{
+use iot::{
     Network5GManager, Network5GManagerConfig, Network5GConfig, NetworkSliceConfig,
     NetworkConnection, Network5GStatus, QoSLevel
 };
@@ -27,11 +27,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 创建5G网络配置
     let network_config = Network5GConfig {
         config_id: "5g_config_001".to_string(),
-        network_type: c17_iot::Network5GType::EnhancedMobileBroadband,
+        network_type: iot::Network5GType::EnhancedMobileBroadband,
         network_name: "5G网络配置".to_string(),
         carrier: "中国移动".to_string(),
-        frequency_band: c17_iot::FrequencyBand::MidBand,
-        network_parameters: c17_iot::NetworkParameters {
+        frequency_band: iot::FrequencyBand::MidBand,
+        network_parameters: iot::NetworkParameters {
             bandwidth: 100,
             latency: 1,
             throughput: 1000,
@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             connection_density: 1000000,
             mobility_support: 500,
         },
-        qos_config: c17_iot::QoSConfig {
+        qos_config: iot::QoSConfig {
             qos_level: QoSLevel::VideoStreaming,
             guaranteed_bit_rate: 100,
             maximum_bit_rate: 1000,
@@ -47,12 +47,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             priority: 1,
             packet_loss_rate: 0.001,
         },
-        security_config: c17_iot::Security5GConfig {
-            encryption_algorithm: c17_iot::EncryptionAlgorithm::AES256,
-            authentication_method: c17_iot::AuthenticationMethod::EAPAKA,
-            key_management: c17_iot::KeyManagement::PublicKeyInfrastructure,
-            security_policy: c17_iot::SecurityPolicy::Default,
-            privacy_protection: c17_iot::PrivacyProtection::Full,
+        security_config: iot::Security5GConfig {
+            encryption_algorithm: iot::EncryptionAlgorithm::AES256,
+            authentication_method: iot::AuthenticationMethod::EAPAKA,
+            key_management: iot::KeyManagement::PublicKeyInfrastructure,
+            security_policy: iot::SecurityPolicy::Default,
+            privacy_protection: iot::PrivacyProtection::Full,
         },
         status: Network5GStatus::Connected,
         created_at: chrono::Utc::now(),
@@ -65,7 +65,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         network_config_id: "5g_config_001".to_string(),
         device_id: "device_001".to_string(),
         connection_status: Network5GStatus::Connected,
-        connection_parameters: c17_iot::ConnectionParameters {
+        connection_parameters: iot::ConnectionParameters {
             signal_strength: -70,
             signal_to_noise_ratio: 20.0,
             latency: 1,
@@ -80,17 +80,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let slice_config = NetworkSliceConfig {
         slice_id: "slice_001".to_string(),
         slice_name: "切片_001".to_string(),
-        slice_type: c17_iot::SliceType::EMBB,
-        service_type: c17_iot::ServiceType::MobileBroadband,
-        resource_allocation: c17_iot::ResourceAllocation {
+        slice_type: iot::LegacySliceType::EMBB,
+        service_type: iot::ServiceType::MobileBroadband,
+        resource_allocation: iot::ResourceAllocation {
             cpu_allocation: 20.0,
             memory_allocation: 25.0,
             bandwidth_allocation: 30.0,
             storage_allocation: 15.0,
             network_allocation: 10.0,
         },
-        isolation_level: c17_iot::IsolationLevel::Logical,
-        status: c17_iot::SliceStatus::Active,
+        isolation_level: iot::IsolationLevel::Logical,
+        status: iot::SliceStatus::Active,
         created_at: chrono::Utc::now(),
     };
 

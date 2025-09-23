@@ -1,8 +1,8 @@
 //! 基准测试演示示例
 //! 
-//! 展示如何使用c17_iot的基准测试功能来评估IoT系统性能
+//! 展示如何使用iot的基准测试功能来评估IoT系统性能
 
-use c17_iot::benchmarking::{
+use iot::benchmarking::{
     Benchmarker, BenchmarkConfig, BenchmarkType
 };
 use std::time::Duration;

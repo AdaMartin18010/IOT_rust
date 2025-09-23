@@ -1,8 +1,8 @@
 //! 内存优化演示示例
 //! 
-//! 展示如何使用c17_iot的内存优化功能来管理IoT系统的内存使用
+//! 展示如何使用iot的内存优化功能来管理IoT系统的内存使用
 
-use c17_iot::memory_optimization::{
+use iot::memory_optimization::{
     MemoryOptimizer,
     //MemoryPool, 
     MemoryPoolConfig, 

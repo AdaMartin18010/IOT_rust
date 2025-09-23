@@ -1,4 +1,4 @@
-use c17_iot::{
+use iot::{
     AdvancedIoTAnalyticsManager, AnalyticsManagerConfig, DataStreamConfig, AnalyticsTaskConfig,
     RealTimeAnalyticsConfig, PredictiveAnalyticsConfig, AnalyticsDataType, AnalyticsProcessingType,
     AnalyticsAlgorithmType, DataStreamStatus, AnalyticsResultStatus, OutputConfig, MonitoringConfig,
@@ -119,7 +119,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let predictive_config = PredictiveAnalyticsConfig {
         config_id: "predictive_config_001".to_string(),
         config_name: "预测分析配置".to_string(),
-        prediction_model: c17_iot::AnalyticsPredictionModel::LinearRegression,
+        prediction_model: iot::AnalyticsPredictionModel::LinearRegression,
         training_data_source: "historical_sensor_data".to_string(),
         prediction_parameters: {
             let mut params = HashMap::new();

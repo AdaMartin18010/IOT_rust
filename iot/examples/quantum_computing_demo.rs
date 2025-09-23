@@ -1,8 +1,8 @@
 //! 量子计算演示示例
 //! 
-//! 展示如何使用c17_iot的量子计算功能进行量子算法、量子机器学习和量子优化
+//! 展示如何使用iot的量子计算功能进行量子算法、量子机器学习和量子优化
 
-use c17_iot::quantum_computing::{
+use iot::quantum_computing::{
     QuantumComputingManager, QuantumConfig, QuantumCircuit,
     QuantumAlgorithmConfig, QuantumAlgorithmType, QuantumGate, QuantumGateOperation
 };

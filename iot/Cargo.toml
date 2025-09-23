@@ -2,7 +2,7 @@
 name = "iot"
 edition = "2024"
 resolver = "3"
-rust-version = "1.89"
+rust-version = "1.90"
 
 [dependencies]
 serde = { workspace = true }
@@ -11,11 +11,49 @@ thiserror = { workspace = true }
 tokio = { workspace = true }
 uuid = { workspace = true }
 chrono = { workspace = true }
+tracing = { workspace = true }
 async-trait = "0.1"
 rand = "0.8"
 rdkafka = { version = "0.38.0", optional = true, features = ["tokio", "cmake-build"] }
 influxdb2 = { version = "0.4.5", optional = true }
 openssl = { version = "0.10.73", optional = true, features = ["vendored"] }
+
+# 2025年最新IoT相关库 - Rust 1.90兼容
+# 注意：某些库可能尚未发布到crates.io，使用可用的版本
+smoltcp = { version = "0.10.0", optional = true, features = ["alloc", "log", "proto-ipv4", "proto-ipv6", "socket-udp", "socket-tcp", "socket-icmp", "socket-raw", "medium-ethernet", "medium-ip", "medium-ieee802154", "phy-raw_socket", "phy-tuntap_interface", "std"] }
+embedded-graphics = { version = "0.8.0", optional = true }
+embedded-hal = { version = "1.0.0", optional = true }
+embedded-hal-async = { version = "1.0.0", optional = true }
+nb = { version = "1.1.0", optional = true }
+heapless = { version = "0.8.0", optional = true, features = ["serde"] }
+cortex-m = { version = "0.7.7", optional = true, features = ["inline-asm", "critical-section-single-core"] }
+cortex-m-rt = { version = "0.7.3", optional = true }
+panic-halt = { version = "0.2.0", optional = true }
+defmt = { version = "0.3.0", optional = true }
+defmt-rtt = { version = "0.4.0", optional = true }
+rtt-target = { version = "0.3.0", optional = true }
+
+# RTIC 2.0 - 实时中断驱动并发框架
+rtic = { version = "2.2.0", optional = true }
+
+# 最新RISC-V支持
+riscv = { version = "0.12.0", optional = true, features = ["critical-section-single-hart"] }
+riscv-rt = { version = "0.12.0", optional = true }
+
+# Embassy异步嵌入式框架
+embassy = { version = "0.0.0", optional = true }
+embassy-executor = { version = "0.9.1", optional = true }
+embassy-time = { version = "0.5.0", optional = true }
+embassy-sync = { version = "0.5.0", optional = true }
+
+# 最新网络协议栈
+lwip = { version = "0.3.15", optional = true }
+pnet = { version = "0.35.0", optional = true, features = ["std"] }
+
+# 最新加密和安全库
+ring = { workspace = true, optional = true }
+rustls = { workspace = true, optional = true }
+rustls-pemfile = { workspace = true, optional = true }
 
 [dev-dependencies]
 rumqttc = "0.25.0"
@@ -41,6 +79,24 @@ default = []
 kafka = ["dep:rdkafka"]
 influx = ["dep:influxdb2"]
 openssl-examples = ["dep:openssl"]
+
+# 2025年最新IoT特性 - Rust 1.90支持
+embedded = ["dep:embedded-hal", "dep:embedded-hal-async", "dep:embedded-graphics", "dep:heapless", "dep:nb"]
+network-stack = ["dep:smoltcp", "dep:lwip", "dep:pnet"]
+security-enhanced = ["dep:ring", "dep:rustls", "dep:rustls-pemfile"]
+
+# 最新嵌入式框架支持 - 简化版本
+rtic = ["dep:rtic"]
+rtic-cortex-m = ["dep:rtic", "rtic/cortex-m", "rtic/thumbv7-backend"]
+
+# RISC-V平台支持 - 简化版本
+riscv = ["dep:riscv"]
+
+# Embassy异步嵌入式框架支持
+embassy-full = ["dep:embassy", "dep:embassy-executor", "dep:embassy-time", "dep:embassy-sync"]
+
+# ESP32平台支持
+esp32 = ["dep:embedded-hal", "dep:embedded-hal-async"]
 
 [[example]]
 name = "kafka_producer"
@@ -120,3 +176,15 @@ path = "examples/network_5g_integration_demo.rs"
 [[example]]
 name = "iot_analytics_advanced_demo"
 path = "examples/iot_analytics_advanced_demo.rs"
+
+[[example]]
+name = "rust_190_features_demo"
+path = "examples/rust_190_features_demo.rs"
+
+[[example]]
+name = "embedded_frameworks_demo"
+path = "examples/embedded_frameworks_demo.rs"
+
+[[example]]
+name = "advanced_iot_features_demo"
+path = "examples/advanced_iot_features_demo.rs"

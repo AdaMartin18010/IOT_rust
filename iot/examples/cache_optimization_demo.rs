@@ -1,8 +1,8 @@
 //! 缓存优化演示示例
 //! 
-//! 展示如何使用c17_iot的智能缓存系统来优化IoT数据访问性能
+//! 展示如何使用iot的智能缓存系统来优化IoT数据访问性能
 
-use c17_iot::data_storage::cache_optimizer::{
+use iot::data_storage::cache_optimizer::{
     CacheOptimizer, CacheConfig, CacheStrategy, PrewarmingStrategy
 };
 use std::collections::HashMap;

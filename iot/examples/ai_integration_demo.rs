@@ -1,8 +1,8 @@
 //! AI集成演示示例
 //! 
-//! 展示如何使用c17_iot的AI集成功能进行智能数据分析和预测
+//! 展示如何使用iot的AI集成功能进行智能数据分析和预测
 
-use c17_iot::ai_integration::{
+use iot::ai_integration::{
     AIIntegrationManager,
     AIModelConfig,
     AIModelType,
@@ -242,7 +242,7 @@ async fn demo_anomaly_detection() -> Result<(), Box<dyn std::error::Error>> {
         
         let analysis = ai_manager.analyze(AnalysisType::AnomalyDetection, data, "anomaly_detection".to_string()).await?;
         
-        if let c17_iot::ai_integration::AnalysisResults::Anomaly(anomaly_result) = analysis.results {
+        if let iot::ai_integration::AnalysisResults::Anomaly(anomaly_result) = analysis.results {
             println!("      是否异常: {}", if anomaly_result.is_anomaly { "是" } else { "否" });
             println!("      异常分数: {:.2}", anomaly_result.anomaly_score);
             println!("      异常类型: {:?}", anomaly_result.anomaly_type);
@@ -273,7 +273,7 @@ async fn demo_trend_analysis() -> Result<(), Box<dyn std::error::Error>> {
         
         let analysis = ai_manager.analyze(AnalysisType::TrendAnalysis, data, "trend_analysis".to_string()).await?;
         
-        if let c17_iot::ai_integration::AnalysisResults::Trend(trend_result) = analysis.results {
+        if let iot::ai_integration::AnalysisResults::Trend(trend_result) = analysis.results {
             println!("      趋势方向: {:?}", trend_result.direction);
             println!("      趋势强度: {:.2}", trend_result.strength);
             println!("      变化率: {:.2}", trend_result.change_rate);
@@ -300,7 +300,7 @@ async fn demo_pattern_recognition() -> Result<(), Box<dyn std::error::Error>> {
     
     let analysis = ai_manager.analyze(AnalysisType::PatternRecognition, pattern_data, "pattern_recognition".to_string()).await?;
     
-    if let c17_iot::ai_integration::AnalysisResults::Pattern(pattern_result) = analysis.results {
+    if let iot::ai_integration::AnalysisResults::Pattern(pattern_result) = analysis.results {
         println!("    识别到的模式数量: {}", pattern_result.pattern_count);
         println!("    模式质量: {:.2}", pattern_result.pattern_quality);
         
@@ -378,7 +378,7 @@ async fn demo_realtime_analysis() -> Result<(), Box<dyn std::error::Error>> {
     
     let analysis = ai_manager.analyze(AnalysisType::RealTimeAnalysis, realtime_data, "realtime_monitor".to_string()).await?;
     
-    if let c17_iot::ai_integration::AnalysisResults::RealTime(realtime_result) = analysis.results {
+    if let iot::ai_integration::AnalysisResults::RealTime(realtime_result) = analysis.results {
         println!("    实时指标:");
         for (metric, value) in &realtime_result.metrics {
             println!("      {}: {:.2}", metric, value);

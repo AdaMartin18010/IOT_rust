@@ -1,8 +1,8 @@
 //! 错误处理演示示例
 //! 
-//! 展示如何使用c17_iot的错误处理功能来管理IoT设备中的各种错误
+//! 展示如何使用iot的错误处理功能来管理IoT设备中的各种错误
 
-use c17_iot::error_handling::{
+use iot::error_handling::{
     ErrorHandler, ErrorType, ErrorSeverity, RecoveryStrategy, RecoveryConfig
 };
 use std::time::Duration;

@@ -1,8 +1,8 @@
 //! 高级协议演示示例
 //! 
-//! 展示如何使用c17_iot的高级协议功能进行现代IoT通信
+//! 展示如何使用iot的高级协议功能进行现代IoT通信
 
-use c17_iot::protocols::advanced_protocols::{
+use iot::protocols::advanced_protocols::{
     AdvancedProtocolManager,
     AdvancedProtocolConfig,
     AdvancedProtocolType, 

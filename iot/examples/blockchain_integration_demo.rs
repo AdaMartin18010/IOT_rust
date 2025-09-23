@@ -1,8 +1,8 @@
 //! 区块链集成演示示例
 //! 
-//! 展示如何使用c17_iot的区块链集成功能进行智能合约、数字身份和供应链溯源
+//! 展示如何使用iot的区块链集成功能进行智能合约、数字身份和供应链溯源
 
-use c17_iot::blockchain_integration::{
+use iot::blockchain_integration::{
     BlockchainIntegrationManager, BlockchainConfig, BlockchainType, SmartContractConfig,
     IdentityType, OperationType, Location, SupplyChainRecord
 };

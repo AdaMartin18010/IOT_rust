@@ -1,8 +1,8 @@
 //! 性能监控演示示例
 //! 
-//! 展示如何使用c17_iot的性能监控功能来监控IoT设备的性能指标
+//! 展示如何使用iot的性能监控功能来监控IoT设备的性能指标
 
-use c17_iot::monitoring::performance_monitor::{
+use iot::monitoring::performance_monitor::{
     PerformanceMonitor, PerformanceMonitorConfig, PerformanceThresholds
 };
 use std::time::Duration;

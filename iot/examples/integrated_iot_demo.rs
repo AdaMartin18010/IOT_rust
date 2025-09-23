@@ -2,10 +2,10 @@
 //! 
 //! 展示如何将性能监控和缓存优化集成到完整的IoT应用中
 
-use c17_iot::monitoring::performance_monitor::{
+use iot::monitoring::performance_monitor::{
     PerformanceMonitor, PerformanceMonitorConfig, PerformanceThresholds
 };
-use c17_iot::data_storage::cache_optimizer::{
+use iot::data_storage::cache_optimizer::{
     CacheOptimizer, CacheConfig, CacheStrategy, PrewarmingStrategy
 };
 use std::collections::HashMap;
@@ -216,7 +216,7 @@ impl IoTDevice {
         })
     }
 
-    fn calculate_cache_hit_rate(&self, stats: &HashMap<c17_iot::data_storage::cache_optimizer::CacheLevel, c17_iot::data_storage::cache_optimizer::CacheStats>) -> f64 {
+    fn calculate_cache_hit_rate(&self, stats: &HashMap<iot::data_storage::cache_optimizer::CacheLevel, iot::data_storage::cache_optimizer::CacheStats>) -> f64 {
         let total_hits: u64 = stats.values().map(|s| s.hits).sum();
         let total_misses: u64 = stats.values().map(|s| s.misses).sum();
         
@@ -227,7 +227,7 @@ impl IoTDevice {
         }
     }
 
-    fn calculate_avg_processing_time(&self, stats: &HashMap<String, c17_iot::monitoring::performance_monitor::PerformanceStats>) -> Duration {
+    fn calculate_avg_processing_time(&self, stats: &HashMap<String, iot::monitoring::performance_monitor::PerformanceStats>) -> Duration {
         let mut total_duration = Duration::ZERO;
         let mut count = 0;
 
@@ -243,7 +243,7 @@ impl IoTDevice {
         }
     }
 
-    fn calculate_error_rate(&self, stats: &HashMap<String, c17_iot::monitoring::performance_monitor::PerformanceStats>) -> f64 {
+    fn calculate_error_rate(&self, stats: &HashMap<String, iot::monitoring::performance_monitor::PerformanceStats>) -> f64 {
         let mut total_error_rate = 0.0;
         let mut count = 0;
 
@@ -259,7 +259,7 @@ impl IoTDevice {
         }
     }
 
-    fn calculate_total_data_points(&self, stats: &HashMap<String, c17_iot::monitoring::performance_monitor::PerformanceStats>) -> u64 {
+    fn calculate_total_data_points(&self, stats: &HashMap<String, iot::monitoring::performance_monitor::PerformanceStats>) -> u64 {
         stats.values().map(|s| s.total_count).sum()
     }
 }

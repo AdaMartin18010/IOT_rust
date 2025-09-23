@@ -1,8 +1,8 @@
 //! 高级IoT安全演示示例
 //! 
-//! 展示如何使用c17_iot的高级安全功能进行零信任架构、量子加密和安全审计
+//! 展示如何使用iot的高级安全功能进行零信任架构、量子加密和安全审计
 
-use c17_iot::iot_security_advanced::{
+use iot::iot_security_advanced::{
     AdvancedIoTSecurityManager, SecurityConfig, SecurityEvent, ZeroTrustPolicy,
     QuantumEncryptionConfig, SecurityAuditRecord, SecurityThreatType, ThreatLevel,
     SecurityEventType, SecurityEventStatus, ZeroTrustPolicyType,

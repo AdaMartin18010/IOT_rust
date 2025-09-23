@@ -1,4 +1,4 @@
-use c17_iot::types::{Lwm2mInstance, Lwm2mObject, Lwm2mResource, Lwm2mValue};
+use iot::types::{Lwm2mInstance, Lwm2mObject, Lwm2mResource, Lwm2mValue};
 
 fn main() {
     // 构建一个极简的 LwM2M 对象（Object 3303 温度传感器）

@@ -1,8 +1,8 @@
 //! 数字孪生集成演示示例
 //! 
-//! 展示如何使用c17_iot的数字孪生功能进行设备虚拟化、实时同步和预测性维护
+//! 展示如何使用iot的数字孪生功能进行设备虚拟化、实时同步和预测性维护
 #[allow(unused_imports)]
-use c17_iot::digital_twin_integration::{
+use iot::digital_twin_integration::{
     DigitalTwinManager, 
     DigitalTwinConfig, 
     DigitalTwinModel, 
@@ -229,7 +229,7 @@ async fn demo_realtime_sync_configuration() -> Result<(), Box<dyn std::error::Er
         data_compression: true,
         incremental_sync: true,
         conflict_resolution: ConflictResolutionStrategy::PhysicalEntityWins,
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let realtime_config_id = twin_manager.create_sync_config(realtime_sync_config).await?;
@@ -247,7 +247,7 @@ async fn demo_realtime_sync_configuration() -> Result<(), Box<dyn std::error::Er
         data_compression: false,
         incremental_sync: false,
         conflict_resolution: ConflictResolutionStrategy::TimestampWins,
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let scheduled_config_id = twin_manager.create_sync_config(scheduled_sync_config).await?;
@@ -265,7 +265,7 @@ async fn demo_realtime_sync_configuration() -> Result<(), Box<dyn std::error::Er
         data_compression: true,
         incremental_sync: true,
         conflict_resolution: ConflictResolutionStrategy::DigitalTwinWins,
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let event_driven_config_id = twin_manager.create_sync_config(event_driven_sync_config).await?;
@@ -292,7 +292,7 @@ async fn demo_predictive_maintenance_configuration() -> Result<(), Box<dyn std::
         ]),
         maintenance_interval: Duration::from_secs(86400 * 7), // 7天
         maintenance_duration: Duration::from_secs(3600), // 1小时
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let predictive_config_id = twin_manager.create_maintenance_config(predictive_maintenance_config).await?;
@@ -310,7 +310,7 @@ async fn demo_predictive_maintenance_configuration() -> Result<(), Box<dyn std::
         ]),
         maintenance_interval: Duration::from_secs(86400 * 30), // 30天
         maintenance_duration: Duration::from_secs(7200), // 2小时
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let condition_based_config_id = twin_manager.create_maintenance_config(condition_based_maintenance_config).await?;
@@ -327,7 +327,7 @@ async fn demo_predictive_maintenance_configuration() -> Result<(), Box<dyn std::
         ]),
         maintenance_interval: Duration::from_secs(86400 * 90), // 90天
         maintenance_duration: Duration::from_secs(14400), // 4小时
-        status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+        status: iot::digital_twin_integration::ConfigStatus::Active,
     };
     
     let preventive_config_id = twin_manager.create_maintenance_config(preventive_maintenance_config).await?;
@@ -664,7 +664,7 @@ async fn demo_digital_twin_statistics() -> Result<(), Box<dyn std::error::Error>
             data_compression: true,
             incremental_sync: true,
             conflict_resolution: ConflictResolutionStrategy::PhysicalEntityWins,
-            status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+            status: iot::digital_twin_integration::ConfigStatus::Active,
         };
         twin_manager.create_sync_config(sync_config).await?;
     }
@@ -681,7 +681,7 @@ async fn demo_digital_twin_statistics() -> Result<(), Box<dyn std::error::Error>
             ]),
             maintenance_interval: Duration::from_secs(86400 * 7),
             maintenance_duration: Duration::from_secs(3600),
-            status: c17_iot::digital_twin_integration::ConfigStatus::Active,
+            status: iot::digital_twin_integration::ConfigStatus::Active,
         };
         twin_manager.create_maintenance_config(maintenance_config).await?;
     }
