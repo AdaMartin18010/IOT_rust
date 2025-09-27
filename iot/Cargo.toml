@@ -13,49 +13,53 @@ uuid = { workspace = true }
 chrono = { workspace = true }
 tracing = { workspace = true }
 async-trait = "0.1"
-rand = "0.8"
+rand = "0.9.2"  # 更新到最新版本
 rdkafka = { version = "0.38.0", optional = true, features = ["tokio", "cmake-build"] }
-influxdb2 = { version = "0.4.5", optional = true }
+influxdb2 = { version = "0.5.2", optional = true }  # 更新到最新版本
 openssl = { version = "0.10.73", optional = true, features = ["vendored"] }
 
 # 2025年最新IoT相关库 - Rust 1.90兼容
+# 更新时间: 2025-09-27 08:29:25
+# 系统时间同步: 已对齐到当前系统时间
 # 注意：某些库可能尚未发布到crates.io，使用可用的版本
-smoltcp = { version = "0.10.0", optional = true, features = ["alloc", "log", "proto-ipv4", "proto-ipv6", "socket-udp", "socket-tcp", "socket-icmp", "socket-raw", "medium-ethernet", "medium-ip", "medium-ieee802154", "phy-raw_socket", "phy-tuntap_interface", "std"] }
+smoltcp = { version = "0.12.0", optional = true, features = ["alloc", "log", "proto-ipv4", "proto-ipv6", "socket-udp", "socket-tcp", "socket-icmp", "socket-raw", "medium-ethernet", "medium-ip", "medium-ieee802154", "phy-raw_socket", "phy-tuntap_interface", "std"] }  # 更新到最新版本
 embedded-graphics = { version = "0.8.0", optional = true }
 embedded-hal = { version = "1.0.0", optional = true }
 embedded-hal-async = { version = "1.0.0", optional = true }
 nb = { version = "1.1.0", optional = true }
-heapless = { version = "0.8.0", optional = true, features = ["serde"] }
+heapless = { version = "0.9.1", optional = true, features = ["serde"] }  # 更新到最新版本
 cortex-m = { version = "0.7.7", optional = true, features = ["inline-asm", "critical-section-single-core"] }
 cortex-m-rt = { version = "0.7.3", optional = true }
-panic-halt = { version = "0.2.0", optional = true }
-defmt = { version = "0.3.0", optional = true }
-defmt-rtt = { version = "0.4.0", optional = true }
-rtt-target = { version = "0.3.0", optional = true }
+panic-halt = { version = "1.0.0", optional = true }  # 更新到最新版本
+defmt = { version = "1.0.1", optional = true }  # 更新到最新版本
+defmt-rtt = { version = "1.0.0", optional = true }  # 更新到最新版本
+rtt-target = { version = "0.6.1", optional = true }  # 更新到最新版本
 
 # RTIC 2.0 - 实时中断驱动并发框架
+# 更新时间: 2025-09-27
 rtic = { version = "2.2.0", optional = true }
 
-# 最新RISC-V支持
-riscv = { version = "0.12.0", optional = true, features = ["critical-section-single-hart"] }
-riscv-rt = { version = "0.12.0", optional = true }
+# 最新RISC-V支持 - 2025年9月最新稳定版本
+riscv = { version = "0.15.0", optional = true, features = ["critical-section-single-hart"] }  # 更新到最新版本
+riscv-rt = { version = "0.16.0", optional = true }  # 更新到最新版本
 
-# Embassy异步嵌入式框架
+# Embassy异步嵌入式框架 - 2025年9月最新稳定版本
 embassy = { version = "0.0.0", optional = true }
 embassy-executor = { version = "0.9.1", optional = true }
 embassy-time = { version = "0.5.0", optional = true }
-embassy-sync = { version = "0.5.0", optional = true }
+embassy-sync = { version = "0.7.2", optional = true }  # 更新到最新版本
 
-# 最新网络协议栈
+# 最新网络协议栈 - 2025年9月最新稳定版本
 lwip = { version = "0.3.15", optional = true }
 pnet = { version = "0.35.0", optional = true, features = ["std"] }
 
-# 最新加密和安全库
+# 最新加密和安全库 - 2025年9月最新稳定版本
 ring = { workspace = true, optional = true }
 rustls = { workspace = true, optional = true }
 rustls-pemfile = { workspace = true, optional = true }
 
 [dev-dependencies]
+# 更新时间: 2025-09-27
 rumqttc = "0.25.0"
 coap-lite = "0.13.3"
 opentelemetry = { workspace = true }
@@ -81,21 +85,27 @@ influx = ["dep:influxdb2"]
 openssl-examples = ["dep:openssl"]
 
 # 2025年最新IoT特性 - Rust 1.90支持
+# 更新时间: 2025-09-27 08:29:25
+# 系统时间同步: 已对齐到当前系统时间
 embedded = ["dep:embedded-hal", "dep:embedded-hal-async", "dep:embedded-graphics", "dep:heapless", "dep:nb"]
 network-stack = ["dep:smoltcp", "dep:lwip", "dep:pnet"]
 security-enhanced = ["dep:ring", "dep:rustls", "dep:rustls-pemfile"]
 
 # 最新嵌入式框架支持 - 简化版本
+# 更新时间: 2025-09-27
 rtic = ["dep:rtic"]
 rtic-cortex-m = ["dep:rtic", "rtic/cortex-m", "rtic/thumbv7-backend"]
 
 # RISC-V平台支持 - 简化版本
+# 更新时间: 2025-09-27
 riscv = ["dep:riscv"]
 
 # Embassy异步嵌入式框架支持
+# 更新时间: 2025-09-27
 embassy-full = ["dep:embassy", "dep:embassy-executor", "dep:embassy-time", "dep:embassy-sync"]
 
 # ESP32平台支持
+# 更新时间: 2025-09-27
 esp32 = ["dep:embedded-hal", "dep:embedded-hal-async"]
 
 [[example]]
